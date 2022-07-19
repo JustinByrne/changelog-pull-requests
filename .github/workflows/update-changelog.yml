@@ -41,6 +41,7 @@ jobs:
       - name: Create Pull Request
         uses: repo-sync/pull-request@v2
         with:
+          source_branch: "update_changelog/${{ github.event.release.name }}"
           destination_branch: "main"
           pr_title: "Updated changelog to include ${{ github.event.release.name }}"
           github_token: ${{ secrets.GITHUB_TOKEN }}
