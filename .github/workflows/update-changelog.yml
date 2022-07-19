@@ -5,7 +5,7 @@ on:
     types: [released]
 
 jobs:
-  update:
+  create-branch:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,7 +27,17 @@ jobs:
           branch: update_changelog/${{ github.event.release.name }}
           file_pattern: CHANGELOG.md
           create_branch: true
+  
+  create-pull-request:
+    runs-on: ubuntu-latest
+    depends-on: create-branch
 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: update_changelog/${{ github.event.release.name }}
+      
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
