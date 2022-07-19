@@ -30,7 +30,7 @@ jobs:
   
   create-pull-request:
     runs-on: ubuntu-latest
-    depends-on: create-branch
+    needs: create-branch
 
     steps:
       - name: Checkout code
