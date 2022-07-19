@@ -39,8 +39,7 @@ jobs:
           ref: update_changelog/${{ github.event.release.name }}
       
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
+        uses: repo-sync/pull-request@v2
         with:
-          base: update_changelog/${{ github.event.release.name }}
-          branch: main
-          title: Updated CHANGELOG to include new version
+          pr_title: "Updated changelog to include ${{ github.event.release.name }}"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
