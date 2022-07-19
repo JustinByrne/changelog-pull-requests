@@ -32,4 +32,5 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           branch: update_changelog/${{ github.event.release.name }}
+          base: main
           title: Updated CHANGELOG to include new version
